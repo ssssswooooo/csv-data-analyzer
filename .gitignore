@@ -29,6 +29,9 @@ ENV/
 env/
 .env
 
+# uv
+.python-version
+
 # Environment Variables
 .env
 .env.local

@@ -35,21 +35,40 @@ StreamlitとPandasを使用した高機能なWebベースのCSVデータ分析�
 
 ## 🚀 セットアップ
 
+### 前提条件
+- Python 3.13以上
+- uv（Python パッケージマネージャー）
+
+### uvのインストール
+```bash
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# Homebrew (macOS)
+brew install uv
+```
+
 ### 1. 依存関係をインストール
 ```bash
-# 必要なライブラリをインストール
-pip install -r requirements.txt
+# uvを使用（推奨）
+uv sync
 
-# または個別にインストール
-pip install streamlit pandas matplotlib seaborn plotly numpy openpyxl scipy
+# または従来のpipを使用
+pip install -r requirements.txt
 ```
 
 ### 2. アプリケーションを起動
 ```bash
-# 方法1: 直接起動
-streamlit run app.py
+# 方法1: uvを使用（推奨）
+uv run streamlit run app.py
 
 # 方法2: 起動スクリプト使用
+uv run python run.py
+
+# 方法3: 従来のpython使用
 python run.py
 ```
 
@@ -57,8 +76,8 @@ python run.py
 `http://localhost:8501` にアクセスしてアプリを使用
 
 ### トラブルシューティング
-- **ModuleNotFoundError**: `pip install -r requirements.txt` を実行してください
-- **ポートエラー**: 別のポートを使用する場合は `streamlit run app.py --server.port 8502`
+- **ModuleNotFoundError**: `uv sync` または `pip install -r requirements.txt` を実行してください
+- **ポートエラー**: 別のポートを使用する場合は `uv run streamlit run app.py --server.port 8502`
 - **エンコーディングエラー**: CSVファイルがUTF-8、Shift_JIS、CP932のいずれかであることを確認してください
 
 ## 📖 使い方
